@@ -71,7 +71,7 @@ class MiBioPage extends StatelessWidget {
                                                 
                                                     child: Container(
                                                           height: alturaMitadPantalla * 0.5,
-                                                          width: size.width * 0.4,
+                                                          width: size.width * 0.5,
                                                           //color: Color(0xff615AAB), // colores hexadecimal 0xff PREFIJO
                                                           child: 
                                                               FittedBox(
