@@ -14,8 +14,11 @@ class HomePage extends StatelessWidget {
     return ChangeNotifierProvider(
           create: (_) => new _NavegacionModel(),
           child: Scaffold(
+            
+            //backgroundColor: Colors.pink[50],
             body: _TabsOdontologia(),  
-            bottomNavigationBar: _Navegacion(),    
+            bottomNavigationBar: _Navegacion(),
+                                   
           ),
     );
   }
@@ -49,22 +52,26 @@ class _Navegacion extends StatelessWidget {
     final newsService = Provider.of<NewsService>(context); */
     final navegacionModel = Provider.of<_NavegacionModel>(context);
 
-    return FancyBottomNavigation(
-      circleColor: Colors.deepPurple[300],
-      activeIconColor: Colors.white,
-      barBackgroundColor: Colors.pink[50],
-      inactiveIconColor: Colors.pink[200],
-      textColor: Colors.deepPurple[300],
-      tabs: [
-            TabData(iconData: Icons.school, title: "Mi Bio"),
-            TabData(iconData: Icons.business, title: "Servicios"),
-            TabData(iconData: Icons.work, title: "Contacto")
-        ],
-        onTabChangedListener: (position) {
-           navegacionModel.paginaActual =  position;
-        },
-        initialSelection: navegacionModel.paginaActual,
-        
+    return  Container(
+          padding: EdgeInsets.only(bottom: 10),
+          color: Colors.pink[50],
+          child: FancyBottomNavigation(
+              circleColor: Colors.deepPurple[300],
+              activeIconColor: Colors.white,
+              barBackgroundColor: Colors.pink[50],
+              inactiveIconColor: Colors.pink[200],
+              textColor: Colors.deepPurple[300],
+              tabs: [
+                    TabData(iconData: Icons.school, title: ""),
+                    TabData(iconData: Icons.business, title: ""),
+                    TabData(iconData: Icons.work, title: "")
+                ],
+                onTabChangedListener: (position) {
+                  navegacionModel.paginaActual =  position;
+                },
+                initialSelection: navegacionModel.paginaActual,
+                
+            ),
     );
 
 
