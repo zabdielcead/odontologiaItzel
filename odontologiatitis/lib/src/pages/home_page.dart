@@ -63,7 +63,7 @@ class _Navegacion extends StatelessWidget {
               textColor: Colors.deepPurple[300],
               tabs: [
                     TabData(iconData: Icons.school, title: ""),
-                    TabData(iconData: Icons.business, title: ""),
+                    TabData(iconData: Icons.business, title: ""), 
                     TabData(iconData: Icons.work, title: "")
                 ],
                 onTabChangedListener: (position) {
