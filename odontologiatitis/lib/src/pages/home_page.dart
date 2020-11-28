@@ -8,16 +8,25 @@ import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
  
+ 
 
   @override
   Widget build(BuildContext context) {
+    final widthPantalla = MediaQuery.of(context).size.width;
+    final heightPantalla = MediaQuery.of(context).size.height;
+
     return ChangeNotifierProvider(
           create: (_) => new _NavegacionModel(),
           child: Scaffold(
             
             //backgroundColor: Colors.pink[50],
-            body: _TabsOdontologia(),  
-            bottomNavigationBar: _Navegacion(),
+            body: Stack(
+                children: [
+                  _TabsOdontologia(),
+                  _Navegacion(widthPantalla: widthPantalla, heightPantalla: heightPantalla,)
+                ]
+              ),  
+            //bottomNavigationBar: _Navegacion(),
                                    
           ),
     );
@@ -45,6 +54,13 @@ class _TabsOdontologia extends StatelessWidget {
 
 class _Navegacion extends StatelessWidget {
 
+  const _Navegacion({
+     @required this.widthPantalla,
+      @required this.heightPantalla
+  });
+
+  final double widthPantalla;
+  final double heightPantalla;
 
   @override
   Widget build(BuildContext context) {
@@ -52,27 +68,34 @@ class _Navegacion extends StatelessWidget {
     final newsService = Provider.of<NewsService>(context); */
     final navegacionModel = Provider.of<_NavegacionModel>(context);
 
-    return  Container(
-          padding: EdgeInsets.only(bottom: 10),
-          color: Colors.pink[50],
-          child: FancyBottomNavigation(
-              circleColor: Colors.deepPurple[300],
-              activeIconColor: Colors.white,
-              barBackgroundColor: Colors.pink[50],
-              inactiveIconColor: Colors.pink[200],
-              textColor: Colors.deepPurple[300],
-              tabs: [
-                    TabData(iconData: Icons.school, title: ""),
-                    TabData(iconData: Icons.business, title: ""), 
-                    TabData(iconData: Icons.work, title: "")
-                ],
-                onTabChangedListener: (position) {
-                  navegacionModel.paginaActual =  position;
-                },
-                initialSelection: navegacionModel.paginaActual,
-                
-            ),
-    );
+    return  Positioned(
+                bottom: 40,
+                left: widthPantalla * 0.1,
+                child: Container(
+                      width: widthPantalla * 0.8,
+                      //height: heightPantalla* 0.1,
+                      //padding: EdgeInsets.only(bottom: 10),
+                      color: Colors.pink[50],
+                      child: FancyBottomNavigation(
+                        
+                                circleColor: Colors.deepPurple[300],
+                                activeIconColor: Colors.white,
+                                barBackgroundColor: Colors.pink[50],
+                                inactiveIconColor: Colors.pink[200],
+                                textColor: Colors.deepPurple[300],
+                                tabs: [
+                                      TabData(iconData: Icons.school, title: ""),
+                                      TabData(iconData: Icons.business, title: ""), 
+                                      TabData(iconData: Icons.work, title: "")
+                                  ],
+                                  onTabChangedListener: (position) {
+                                    navegacionModel.paginaActual =  position;
+                                  },
+                                  initialSelection: navegacionModel.paginaActual,
+                                  
+                              ),
+                ),
+            );
 
 
     /* return BottomNavigationBar(
