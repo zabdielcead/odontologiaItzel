@@ -6,21 +6,18 @@ class MiBioPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-          top: true,
-          child: Scaffold(
-            appBar: _createAppBar(),
-            body: Stack(
-              children: <Widget>[              
-                  
-                       _crearFondo(context),
-                       
-                    
+    return Scaffold(
+          //appBar: _createAppBar(),
+          body: Stack(
+            children: <Widget>[              
                 
-              ],
-            )
-          ),
-    );
+                     _crearFondo(context),
+                     
+                  
+              
+            ],
+          )
+        );
   }
 
 
